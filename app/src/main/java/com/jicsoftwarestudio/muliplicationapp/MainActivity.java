@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.jicsoftwarestudio.muliplicationapp.FirstActivity.FirstActivityPage;
+
+import com.jicsoftwarestudio.muliplicationapp.FourthActivity.FourthActivityPage;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -17,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                Intent intent = new Intent(MainActivity.this, FirstActivityPage.class);
                 startActivity(intent);
             }
         });
@@ -25,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         imageView4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ThirdActivity.class);
+                Intent intent = new Intent(MainActivity.this, FourthActivityPage.class);
                 startActivity(intent);
             }
         });

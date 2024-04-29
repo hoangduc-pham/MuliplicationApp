@@ -1,9 +1,8 @@
-package com.jicsoftwarestudio.muliplicationapp;
+package com.jicsoftwarestudio.muliplicationapp.FirstActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +10,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.jicsoftwarestudio.muliplicationapp.R;
+import com.jicsoftwarestudio.muliplicationapp.ResultActivity;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -19,7 +20,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-public class tinh2 extends AppCompatActivity {
+public class FirstActivityButtonItem2 extends AppCompatActivity {
 
     private TextView questionTextView;
     private Button answerButton1;
@@ -30,34 +31,30 @@ public class tinh2 extends AppCompatActivity {
     private int correctCount = 0; // Số câu trả lời đúng
     private int correctAnswer;
     // Khai báo tổng số câu hỏi bạn muốn đạt được
-    private final int totalQuestions = 2;
     private ProgressBar progressBar;
-    private Drawable originalButtonBackground;
     private List<String> generatedQuestions; // Danh sách các câu hỏi đã được tạo ra
     private Set<Integer> usedAnswers; // Danh sách các đáp án đã được sử dụng
     // Khai báo biến để lưu thời gian bắt đầu từ câu hỏi đầu tiên
     private long startTimeOfFirstQuestion = 0;
-    // Khai báo biến để lưu thời gian hoàn thành câu thứ 10
-    private long endTimeOfQuestion10 = 0;
+    // Khai báo biến để lưu thời gian hoàn thành câu thứ 9
+    private long endTimeOfQuestion9 = 0;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tinh2);
+        setContentView(R.layout.activity_first_button_item2);
         Intent intent = getIntent();
         // Trích xuất dữ liệu từ Intent
         String numberstring = intent.getStringExtra("number");
         number = Integer.parseInt(numberstring);
 
         questionTextView = findViewById(R.id.questionTextView);
-        answerButton1 = findViewById(R.id.tinh1);
-        answerButton2 = findViewById(R.id.tinh2);
-        answerButton3 = findViewById(R.id.tinh3);
-        answerButton4 = findViewById(R.id.tinh4);
+        answerButton1 = findViewById(R.id.answerButton1);
+        answerButton2 = findViewById(R.id.answerButton2);
+        answerButton3 = findViewById(R.id.answerButton3);
+        answerButton4 = findViewById(R.id.answerButton4);
         progressBar = findViewById(R.id.progressBar);
-        // Lưu trạng thái màu nền gốc của button
-        originalButtonBackground = answerButton1.getBackground();
         // Khởi tạo danh sách câu hỏi và danh sách đáp án đã sử dụng
         generatedQuestions = new ArrayList<>();
         usedAnswers = new HashSet<>();
@@ -70,7 +67,7 @@ public class tinh2 extends AppCompatActivity {
         // Tạo câu hỏi mới không trùng với các câu hỏi đã được tạo trước đó
         do {
             int num1 = number; // Random số từ 1 đến 10
-            int num2 = random.nextInt(number) + 1; // Random số từ 1 đến 10
+            int num2 = random.nextInt(10) + 1; // Random số từ 1 đến 10
             correctAnswer = num1 * num2;
             question = num1 + " x " + num2 + " = ?";
         } while (generatedQuestions.contains(question));
@@ -127,10 +124,10 @@ public class tinh2 extends AppCompatActivity {
             }
         }
         // Reset màu nền của các button về trạng thái gốc
-        answerButton1.setBackground(originalButtonBackground);
-        answerButton2.setBackground(originalButtonBackground);
-        answerButton3.setBackground(originalButtonBackground);
-        answerButton4.setBackground(originalButtonBackground);
+        answerButton1.setBackgroundResource(R.drawable.blue_button);
+        answerButton2.setBackgroundResource(R.drawable.blue_button);
+        answerButton3.setBackgroundResource(R.drawable.blue_button);
+        answerButton4.setBackgroundResource(R.drawable.blue_button);
     }
 
     private int generateWrongAnswer() {
@@ -149,20 +146,20 @@ public class tinh2 extends AppCompatActivity {
             }
             correctCount++; // Tăng số câu trả lời đúng
             // Tính toán phần trăm dựa trên số lượng câu trả lời đúng
-            int progress = (correctCount * 10);
+            int progress = (correctCount * 11);
             // Giá trị tối đa của progress là 100
-            progress = Math.min(progress, 100);
+            progress = Math.min(progress, 99);
             // Cập nhật giá trị của ProgressBar
             progressBar.setProgress(progress);
-             // Kiểm tra nếu đã trả lời đúng đủ 10 câu
-            if (correctCount == 10) {
-                endTimeOfQuestion10 = System.currentTimeMillis();
+            // Kiểm tra nếu đã trả lời đúng đủ 9 câu
+            if (correctCount == 9) {
+                endTimeOfQuestion9 = System.currentTimeMillis();
                 // Xử lý khi trò chơi kết thúc sau khi trả lời đúng đủ 10 câu
                 Toast.makeText(this, "Kết thúc trò chơi", Toast.LENGTH_SHORT).show();
                 // Tạo Intent để chuyển sang Activity thống kê kết quả
                 Intent intent = new Intent(this, ResultActivity.class);
-                // Tính thời gian hoàn thành từ câu đầu tiên đến câu thứ 10
-                long timeTakenForAllQuestions = endTimeOfQuestion10 - startTimeOfFirstQuestion;
+                // Tính thời gian hoàn thành từ câu đầu tiên đến câu thứ 9
+                long timeTakenForAllQuestions = endTimeOfQuestion9 - startTimeOfFirstQuestion;
                 intent.putExtra("timeTakenForAllQuestions", timeTakenForAllQuestions);
                 startActivity(intent);
                 finish();
@@ -170,13 +167,9 @@ public class tinh2 extends AppCompatActivity {
             }
             generateQuestion();
         } else {
-            Toast.makeText(this, "Sai bét", Toast.LENGTH_SHORT).show();
             // Xử lý khi câu trả lời sai
             // Đặt màu nền cho button là đỏ
-            selectedButton.setBackgroundResource(R.drawable.red_button_background);
-            // Ví dụ: Hiển thị thông báo "Incorrect!"
+            selectedButton.setBackgroundResource(R.drawable.red_button);
         }
-
-        // Tạo câu hỏi mới sau khi trả lời
     }
 }

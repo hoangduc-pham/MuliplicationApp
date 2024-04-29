@@ -13,6 +13,20 @@
         android:theme="@style/Theme.MuliplicationApp"
         tools:targetApi="31">
         <activity
+            android:name=".FirstActivity.FirstActivityButtonItem3"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".FirstActivity.FirstActivityButtonItem2"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ResultActivity"
             android:exported="false">
             <meta-data
@@ -20,21 +34,21 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".tinh2"
+            android:name=".FourthActivity.FourthActivityButtonItem1"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ThirdActivity"
+            android:name=".FourthActivity.FourthActivityPage"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".SecondActivity"
+            android:name=".FirstActivity.FirstActivityPage"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

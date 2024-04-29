@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".SecondActivity">
+    tools:context=".FirstActivity.FirstActivityButtonItem3">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/questionTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textColor="#009688"
-        android:textSize="48sp"
-        android:textStyle="bold" />
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:text="Câu hỏi sẽ được hiển thị ở đây"
+        android:textColor="@android:color/black"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,6 +27,7 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
+                android:padding="5dp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -34,14 +35,59 @@
                 android:orientation="vertical">
 
                 <Button
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:background="@drawable/blue_button"
+                    android:id="@+id/button0"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:onClick="onAnswerSelected"
+                    android:text="0" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:padding="5dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:background="@drawable/blue_button"
+                    android:id="@+id/button1"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:onClick="onAnswerSelected"
+                    android:text="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:padding="5dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:background="@drawable/blue_button"
                     android:id="@+id/button2"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:onClick="showMultiplicationTable"
+                    android:onClick="onAnswerSelected"
                     android:text="2" />
             </LinearLayout>
 
             <LinearLayout
+                android:padding="5dp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -49,14 +95,24 @@
                 android:orientation="vertical">
 
                 <Button
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:background="@drawable/blue_button"
                     android:id="@+id/button3"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:onClick="showMultiplicationTable"
+                    android:onClick="onAnswerSelected"
                     android:text="3" />
             </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <LinearLayout
+                android:padding="5dp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -64,14 +120,19 @@
                 android:orientation="vertical">
 
                 <Button
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:background="@drawable/blue_button"
                     android:id="@+id/button4"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:onClick="showMultiplicationTable"
+                    android:onClick="onAnswerSelected"
                     android:text="4" />
             </LinearLayout>
 
             <LinearLayout
+                android:padding="5dp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -79,19 +140,19 @@
                 android:orientation="vertical">
 
                 <Button
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:background="@drawable/blue_button"
                     android:id="@+id/button5"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:onClick="showMultiplicationTable"
+                    android:onClick="onAnswerSelected"
                     android:text="5" />
             </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
             <LinearLayout
+                android:padding="5dp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -99,14 +160,19 @@
                 android:orientation="vertical">
 
                 <Button
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:background="@drawable/blue_button"
                     android:id="@+id/button6"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:onClick="showMultiplicationTable"
+                    android:onClick="onAnswerSelected"
                     android:text="6" />
             </LinearLayout>
 
             <LinearLayout
+                android:padding="5dp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -114,14 +180,18 @@
                 android:orientation="vertical">
 
                 <Button
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:background="@drawable/blue_button"
                     android:id="@+id/button7"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:onClick="showMultiplicationTable"
+                    android:onClick="onAnswerSelected"
                     android:text="7" />
             </LinearLayout>
-
             <LinearLayout
+                android:padding="5dp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -129,26 +199,15 @@
                 android:orientation="vertical">
 
                 <Button
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:background="@drawable/blue_button"
                     android:id="@+id/button8"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:onClick="showMultiplicationTable"
+                    android:onClick="onAnswerSelected"
                     android:text="8" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/button9"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:onClick="showMultiplicationTable"
-                    android:text="9" />
             </LinearLayout>
         </LinearLayout>
 
@@ -156,30 +215,41 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <LinearLayout
+                android:padding="5dp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical">
                 <Button
+                    android:id="@+id/button_ok"
+                    android:text="ok"
+                    android:onClick="onAnswerSelected"
+                    android:background="@drawable/blue_button"
                     android:layout_width="match_parent"
                     android:layout_height="70dp">
                 </Button>
             </LinearLayout>
 
             <LinearLayout
+                android:padding="5dp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical">
                 <Button
+                    android:id="@+id/button9"
+                    android:text="9"
+                    android:onClick="onAnswerSelected"
+                    android:background="@drawable/blue_button"
                     android:layout_width="match_parent"
                     android:layout_height="70dp">
                 </Button>
             </LinearLayout>
 
             <LinearLayout
+                android:padding="5dp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -187,11 +257,23 @@
                 android:orientation="vertical">
 
                 <Button
+                    android:id="@+id/button_clear"
+                    android:text="c"
+                    android:onClick="onAnswerSelected"
+                    android:background="@drawable/blue_button"
                     android:layout_width="match_parent"
                     android:layout_height="70dp">
-
                 </Button>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:progress="0"
+        style="?android:attr/progressBarStyleHorizontal" />
+
 </RelativeLayout>
