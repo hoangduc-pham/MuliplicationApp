@@ -3,6 +3,7 @@ package com.jicsoftwarestudio.muliplicationapp.FourthActivity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -150,7 +151,7 @@ public class FourthActivityButtonItem1 extends AppCompatActivity {
             progress = Math.min(progress, 100);
             // Cập nhật giá trị của ProgressBar
             progressBar.setProgress(progress);
-             // Kiểm tra nếu đã trả lời đúng đủ 10 câu
+            // Kiểm tra nếu đã trả lời đúng đủ 10 câu
             if (correctCount == 10) {
                 endTimeOfQuestion10 = System.currentTimeMillis();
                 // Xử lý khi trò chơi kết thúc sau khi trả lời đúng đủ 10 câu

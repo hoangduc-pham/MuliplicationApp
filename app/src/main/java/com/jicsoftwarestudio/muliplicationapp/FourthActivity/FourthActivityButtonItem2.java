@@ -1,4 +1,4 @@
-package com.jicsoftwarestudio.muliplicationapp.FirstActivity;
+package com.jicsoftwarestudio.muliplicationapp.FourthActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +11,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.jicsoftwarestudio.muliplicationapp.R;
 import com.jicsoftwarestudio.muliplicationapp.ResultActivity;
 
@@ -21,8 +20,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-public class FirstActivityButtonItem3 extends AppCompatActivity {
-
+public class FourthActivityButtonItem2 extends AppCompatActivity {
     private TextView questionTextView;
     private List<Button> answerButtons;
     private int number;
@@ -37,7 +35,7 @@ public class FirstActivityButtonItem3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_first_button_item3);
+        setContentView(R.layout.activity_fourth_button_item2);
         Intent intent = getIntent();
         String numberstring = intent.getStringExtra("number");
         number = Integer.parseInt(numberstring);
@@ -66,7 +64,7 @@ public class FirstActivityButtonItem3 extends AppCompatActivity {
         String question;
         do {
             int num1 = number;
-            int num2 = random.nextInt(10) + 1;
+            int num2 = random.nextInt(number) + 1;
             correctAnswer = num1 * num2;
             question = num1 + " x " + num2 + " = ?";
         } while (generatedQuestions.contains(question));
@@ -121,7 +119,8 @@ public class FirstActivityButtonItem3 extends AppCompatActivity {
                     }
                 } else {
                     answerTextView.setTextColor(Color.RED);
+                }
             }
         }
     }
-}}
+}

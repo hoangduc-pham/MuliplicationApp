@@ -33,6 +33,18 @@ public class FourthActivityPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btn = findViewById(R.id.buttonItem2);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FourthActivityPage.this, FourthActivityButtonItem2.class);
+                String k = Integer.toString(i);
+
+                // Đính kèm dữ liệu vào Intent
+                intent.putExtra("number", k);
+                startActivity(intent);
+            }
+        });
         // Mặc định hiển thị bảng cửu chương số 11
         showMultiplicationTable(11);
     }

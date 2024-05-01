@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import com.jicsoftwarestudio.muliplicationapp.FirstActivity.FirstActivityPage;
 
 import com.jicsoftwarestudio.muliplicationapp.FourthActivity.FourthActivityPage;
+import com.jicsoftwarestudio.muliplicationapp.ThirdActivity.ThirdActivityPage;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +31,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, FourthActivityPage.class);
+                startActivity(intent);
+            }
+        });
+        ImageView imageView3 = findViewById(R.id.imageView3);
+        imageView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ThirdActivityPage.class);
                 startActivity(intent);
             }
         });
