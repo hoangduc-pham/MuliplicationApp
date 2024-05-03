@@ -132,7 +132,17 @@ public class FourthActivityButtonItem1 extends AppCompatActivity {
 
     private int generateWrongAnswer() {
         Random random = new Random();
-        return random.nextInt(100) + 1; // Tạo một số ngẫu nhiên khác với câu trả lời đúng
+        // Tạo một giá trị ngẫu nhiên nhỏ từ -5 đến 5
+        int randomOffset = random.nextInt(11) - 5;
+        // Thêm hoặc trừ giá trị ngẫu nhiên này từ câu trả lời đúng
+        int wrongAnswer = correctAnswer + randomOffset;
+        // Đảm bảo rằng giá trị của wrongAnswer không bằng correctAnswer
+        while (wrongAnswer == correctAnswer) {
+            // Nếu giá trị sai vẫn bằng giá trị đúng, thử tạo giá trị ngẫu nhiên mới
+            randomOffset = random.nextInt(11) - 5;
+            wrongAnswer = correctAnswer + randomOffset;
+        }
+        return wrongAnswer;
     }
 
     public void onAnswerSelected(View view) {

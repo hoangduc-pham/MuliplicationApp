@@ -90,7 +90,12 @@ public class ThirdActivityButtonItem1 extends AppCompatActivity {
         // Tạo câu hỏi mới không trùng với các câu hỏi đã được tạo trước đó
         do {
             int num1 = randomNumber; // Random số từ 1 đến 10
-            int num2 = random.nextInt(randomNumber) + 1; // Random số từ 1 đến 10
+            int num2;
+            if (randomNumber >= 2 && randomNumber <= 10) {
+                num2 = random.nextInt(11) + 1; // Random số từ 1 đến 10
+            } else {
+                num2 = random.nextInt(randomNumber) + 1; // Random số từ 1 cho đến randomNumber
+            }
             correctAnswer = num1 * num2;
             question = num1 + " x " + num2 + " = ?";
         } while (generatedQuestions.contains(question));
@@ -155,8 +160,19 @@ public class ThirdActivityButtonItem1 extends AppCompatActivity {
 
     private int generateWrongAnswer() {
         Random random = new Random();
-        return random.nextInt(100) + 1; // Tạo một số ngẫu nhiên khác với câu trả lời đúng
+        // Tạo một giá trị ngẫu nhiên nhỏ từ -5 đến 5
+        int randomOffset = random.nextInt(11) - 5;
+        // Thêm hoặc trừ giá trị ngẫu nhiên này từ câu trả lời đúng
+        int wrongAnswer = correctAnswer + randomOffset;
+        // Đảm bảo rằng giá trị của wrongAnswer không bằng correctAnswer
+        while (wrongAnswer == correctAnswer) {
+            // Nếu giá trị sai vẫn bằng giá trị đúng, thử tạo giá trị ngẫu nhiên mới
+            randomOffset = random.nextInt(11) - 5;
+            wrongAnswer = correctAnswer + randomOffset;
+        }
+        return wrongAnswer;
     }
+
 
     public void onAnswerSelected(View view) {
         Button selectedButton = (Button) view;

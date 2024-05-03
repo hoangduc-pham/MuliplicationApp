@@ -26,6 +26,10 @@ public class ThirdActivityPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third_page);
         btn = findViewById(R.id.buttonItem1);
+        // Mặc định chọn các số từ 2 đến 20
+        for (int num = 2; num <= 20; num++) {
+            selectedNumbers.add(num);
+        }
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,7 +53,6 @@ public class ThirdActivityPage extends AppCompatActivity {
         // Lấy số từ ID của nút
         Button button = (Button) view;
         int buttonId = button.getId();
-
         // Lấy trạng thái hiện tại của button
         boolean isBlue = buttonStates.containsKey(buttonId) ? buttonStates.get(buttonId) : false;
         // Nếu button chưa có trong buttonStates, mặc định là blue
@@ -57,29 +60,6 @@ public class ThirdActivityPage extends AppCompatActivity {
             buttonStates.put(buttonId, true);
             isBlue = true;
         }
-
-        // Nếu button đang ở trạng thái blue, thực hiện lấy số từ button và gán cho i
-        if (isBlue) {
-            i = Integer.parseInt(button.getText().toString());
-        }
-
-        // Tiến hành xử lý hoặc chuyển đến màn hình khác tùy theo yêu cầu
-        // Ví dụ:
-        // Convert Set thành một mảng các số để truyền dữ liệu qua Intent
-        for (Map.Entry<Integer, Boolean> entry : buttonStates.entrySet()) {
-            int currentButtonId = entry.getKey();
-            boolean currentIsBlue = entry.getValue();
-
-            // Nếu button đang ở trạng thái blue, thêm số tương ứng vào tập hợp numbers
-            if (currentIsBlue) {
-                Button currentButton = findViewById(currentButtonId);
-                int number = Integer.parseInt(currentButton.getText().toString());
-                selectedNumbers.add(number);
-            }
-        }
-
-
-        // Đặt màu nền mới cho nút dựa trên trạng thái hiện tại
         // Đặt màu nền mới cho nút dựa trên trạng thái hiện tại
         if (isBlue) {
             button.setBackgroundResource(R.drawable.gray_button);
@@ -91,7 +71,6 @@ public class ThirdActivityPage extends AppCompatActivity {
         } else {
             button.setBackgroundResource(R.drawable.blue_button);
             buttonStates.put(buttonId, true); // Cập nhật trạng thái là true (gray_button)
-
             // Thêm số vào selectedNumbers nếu nút chưa được chọn trước đó
             int numberToAdd = Integer.parseInt(button.getText().toString());
             selectedNumbers.add(numberToAdd);
