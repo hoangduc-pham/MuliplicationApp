@@ -460,7 +460,6 @@
                     android:id="@+id/buttonItem1"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:onClick="showMultiplicationTable"
                     android:text="÷" />
             </LinearLayout>
             <LinearLayout
@@ -479,7 +478,6 @@
                     android:id="@+id/buttonItem2"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:onClick="showMultiplicationTable"
                     android:text="÷" />
             </LinearLayout>
         </LinearLayout>
