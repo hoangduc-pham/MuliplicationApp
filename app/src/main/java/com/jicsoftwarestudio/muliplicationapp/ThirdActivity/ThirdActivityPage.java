@@ -16,9 +16,9 @@ import java.util.Set;
 
 public class ThirdActivityPage extends AppCompatActivity {
     Button btn;
-    int i;
     private final Map<Integer, Boolean> buttonStates = new HashMap<>(); // Ánh xạ ID của button và trạng thái của nó
     private Set<Integer> selectedNumbers = new HashSet<>();
+    private boolean operator; //Dấu chia
 
 
     @Override
@@ -43,6 +43,7 @@ public class ThirdActivityPage extends AppCompatActivity {
                 }
 
                 // Đính kèm dữ liệu vào Intent
+                intent.putExtra("operator", operator);
                 intent.putExtra("number", numbersArray);
                 startActivity(intent);
             }
@@ -74,6 +75,29 @@ public class ThirdActivityPage extends AppCompatActivity {
             // Thêm số vào selectedNumbers nếu nút chưa được chọn trước đó
             int numberToAdd = Integer.parseInt(button.getText().toString());
             selectedNumbers.add(numberToAdd);
+        }
+    }
+    // Phương thức xử lý khi nhấn vào nút chia
+    public void showMultiplicationDivide(View view) {
+        // Lấy số từ ID của nút
+        Button button = (Button) view;
+        int buttonId = button.getId();
+        // Lấy trạng thái hiện tại của button
+        boolean isBlue = buttonStates.containsKey(buttonId) ? buttonStates.get(buttonId) : false;
+        // Nếu button chưa có trong buttonStates, mặc định là blue
+        if (!buttonStates.containsKey(buttonId)) {
+            buttonStates.put(buttonId, true);
+            isBlue = true;
+        }
+        // Đặt màu nền mới cho nút dựa trên trạng thái hiện tại
+        if (isBlue) {
+            button.setBackgroundResource(R.drawable.gray_button);
+            buttonStates.put(buttonId, false);
+            operator = false;
+        } else {
+            button.setBackgroundResource(R.drawable.blue_button);
+            buttonStates.put(buttonId, true); // Cập nhật trạng thái là true (gray_button)
+            operator = true;
         }
     }
 }
