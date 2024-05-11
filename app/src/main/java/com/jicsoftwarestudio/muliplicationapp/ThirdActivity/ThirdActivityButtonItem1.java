@@ -28,7 +28,7 @@ public class ThirdActivityButtonItem1 extends AppCompatActivity {
     private Button answerButton2;
     private Button answerButton3;
     private Button answerButton4;
-    private int randomNumber;
+    private int randomNumberSelect;
     private int correctCount = 0; // Số câu trả lời đúng
     private int correctAnswer;
     private ProgressBar progressBar;
@@ -38,17 +38,13 @@ public class ThirdActivityButtonItem1 extends AppCompatActivity {
     private long startTimeOfFirstQuestion = 0;
     // Khai báo biến để lưu thời gian hoàn thành câu thứ 10
     private long endTimeOfQuestion10 = 0;
+    private String operator; // Lưu toán tử nhân chia
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third_button_item1);
-        Intent intent = getIntent();
-        // Trích xuất dữ liệu từ Intent
-        int[] numbers = intent.getIntArrayExtra("number");
-
-
         questionTextView = findViewById(R.id.questionTextView);
         answerButton1 = findViewById(R.id.answerButton1);
         answerButton2 = findViewById(R.id.answerButton2);
@@ -65,6 +61,7 @@ public class ThirdActivityButtonItem1 extends AppCompatActivity {
         Intent intent = getIntent();
         // Trích xuất dữ liệu từ Intent
         int[] numbers = intent.getIntArrayExtra("number");
+        boolean operatorCheck = intent.getBooleanExtra("operator", false);
 
         // Kiểm tra xem tập hợp số có tồn tại và không rỗng
         if (numbers != null && numbers.length > 0) {
@@ -75,11 +72,11 @@ public class ThirdActivityButtonItem1 extends AppCompatActivity {
             int randomNumberIndex = random.nextInt(numbers.length);
 
             // Sử dụng số ngẫu nhiên để truy xuất phần tử tương ứng trong tập hợp numbers
-            randomNumber = numbers[randomNumberIndex];
+            randomNumberSelect = numbers[randomNumberIndex];
 
             // Sử dụng số ngẫu nhiên được trích xuất
             // Ví dụ:
-            Toast.makeText(this, "Số ngẫu nhiên: " + randomNumber, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Số ngẫu nhiên: " + randomNumberSelect, Toast.LENGTH_SHORT).show();
         } else {
             // Xử lý khi không có dữ liệu được truyền qua Intent hoặc tập hợp số rỗng
             Toast.makeText(this, "Không có dữ liệu số được truyền qua Intent", Toast.LENGTH_SHORT).show();
@@ -89,15 +86,22 @@ public class ThirdActivityButtonItem1 extends AppCompatActivity {
         String question;
         // Tạo câu hỏi mới không trùng với các câu hỏi đã được tạo trước đó
         do {
-            int num1 = randomNumber; // Random số từ 1 đến 10
+            operator = (operatorCheck) ? (random.nextBoolean() ? "÷" : "x") : "x";
+            int num1 = randomNumberSelect; // Random số trong các số đã chọn
             int num2;
-            if (randomNumber >= 2 && randomNumber <= 10) {
-                num2 = random.nextInt(11) + 1; // Random số từ 1 đến 10
+            if (randomNumberSelect >= 2 && randomNumberSelect <= 10) {
+                do {
+                    num2 = random.nextInt(11) + 1; // Random số từ 1 đến 10
+                } while (operator.equals("÷") && num1 % num2 != 0);
             } else {
-                num2 = random.nextInt(randomNumber) + 1; // Random số từ 1 cho đến randomNumber
+                do {
+                    num2 = random.nextInt(randomNumberSelect) + 1; // Random số từ 1 cho đến randomNumber
+                } while (operator.equals("÷") && num1 % num2 != 0);
             }
-            correctAnswer = num1 * num2;
-            question = num1 + " x " + num2 + " = ?";
+            if(operator.equals("x")){
+            correctAnswer = num1 * num2;}
+            else { correctAnswer = num1 / num2;}
+            question = num1 + " " + operator + " " + num2 + " = ?";
         } while (generatedQuestions.contains(question));
 
         generatedQuestions.add(question);
